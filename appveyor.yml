@@ -18,9 +18,7 @@ build:
   project: toofz.TestsShared.sln
   verbosity: minimal
 after_build:
-  - echo %CONFIGURATION%
-  - echo %PLATFORM%
-  - nuget pack "toofz.TestsShared\toofz.TestsShared.csproj" -Properties "Configuration=%CONFIGURATION%;Platform=%PLATFORM%" -Symbols
+  - nuget pack "C:\projects\toofz-testsshared\toofz.TestsShared\toofz.TestsShared.csproj" -Properties "Configuration=%CONFIGURATION%;Platform=%PLATFORM%" -Symbols
 
 deploy:
   - provider: NuGet
