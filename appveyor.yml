@@ -1,4 +1,4 @@
-version: 1.0.1.{build}
+version: 1.0.6.{build}
 image: Visual Studio 2017
 
 configuration:
@@ -17,6 +17,9 @@ build:
   verbosity: minimal
 after_build:
   - nuget pack "toofz.TestsShared\toofz.TestsShared.csproj" -Properties "Configuration=%CONFIGURATION%;Platform=AnyCPU" -Symbols
+
+artifacts:
+  - push: '*.nupkg'
 
 deploy:
   - provider: NuGet
