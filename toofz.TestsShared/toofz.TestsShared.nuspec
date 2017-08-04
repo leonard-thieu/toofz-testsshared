@@ -2,7 +2,7 @@
 <package>
     <metadata>
         <id>toofz.TestsShared</id>
-        <version>1.0.7</version>
+        <version>1.1.0</version>
         <title>toofz.TestsShared</title>
         <authors>Leonard Thieu</authors>
         <owners>Leonard Thieu</owners>
@@ -10,7 +10,6 @@
         <projectUrl>https://github.com/leonard-thieu/toofz-testsshared</projectUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>Utility library for testing.</description>
-        <releaseNotes>Fix accessibility level of MockHttpMessageHandlerExtensions.</releaseNotes>
         <copyright>Copyright 2017</copyright>
         <tags>toofz utility test</tags>
     </metadata>
