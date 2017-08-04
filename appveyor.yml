@@ -16,7 +16,7 @@ build:
   project: toofz.TestsShared.sln
   verbosity: minimal
 after_build:
-  - nuget pack "C:\projects\toofz-testsshared\toofz.TestsShared\toofz.TestsShared.csproj" -Properties "Configuration=%CONFIGURATION%;Platform=AnyCPU" -Symbols
+  - nuget pack "toofz.TestsShared\toofz.TestsShared.csproj" -Properties "Configuration=%CONFIGURATION%;Platform=AnyCPU" -Symbols
 
 deploy:
   - provider: NuGet
