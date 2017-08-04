@@ -3,8 +3,6 @@ image: Visual Studio 2017
 
 configuration:
   - Release
-platform:
-  - Any CPU
 cache:
   - packages -> **\packages.config
 notifications:
@@ -18,7 +16,7 @@ build:
   project: toofz.TestsShared.sln
   verbosity: minimal
 after_build:
-  - nuget pack "C:\projects\toofz-testsshared\toofz.TestsShared\toofz.TestsShared.csproj" -Properties "Configuration=%CONFIGURATION%;Platform=%PLATFORM%" -Symbols
+  - nuget pack "C:\projects\toofz-testsshared\toofz.TestsShared\toofz.TestsShared.csproj" -Properties "Configuration=%CONFIGURATION%;Platform=AnyCPU" -Symbols
 
 deploy:
   - provider: NuGet
