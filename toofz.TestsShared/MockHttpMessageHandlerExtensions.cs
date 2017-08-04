@@ -1,7 +1,7 @@
 ﻿using System;
 using RichardSzalay.MockHttp;
 
-namespace toofz.NecroDancer.Leaderboards.Tests
+namespace toofz.TestsShared
 {
     public static class MockHttpMessageHandlerExtensions
     {
