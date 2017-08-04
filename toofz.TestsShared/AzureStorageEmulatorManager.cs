@@ -17,7 +17,8 @@ namespace toofz.TestsShared
         {
             FileName = AzureStorageEmulatorPath,
             Arguments = "start",
-            UseShellExecute = false
+            UseShellExecute = false,
+            WindowStyle = ProcessWindowStyle.Hidden,
         };
 
         static readonly ProcessStartInfo stopStorageEmulator = new ProcessStartInfo
