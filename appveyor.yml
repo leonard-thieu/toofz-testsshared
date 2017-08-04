@@ -3,6 +3,8 @@ image: Visual Studio 2017
 
 configuration:
   - Release
+platform:
+  - AnyCPU
 cache:
   - packages -> **\packages.config
 notifications:
