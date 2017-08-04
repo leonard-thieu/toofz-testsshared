@@ -19,7 +19,7 @@ after_build:
   - nuget pack "toofz.TestsShared\toofz.TestsShared.csproj" -Properties "Configuration=%CONFIGURATION%;Platform=AnyCPU" -Symbols
 
 artifacts:
-  - push: '*.nupkg'
+  - path: '*.nupkg'
 
 deploy:
   - provider: NuGet
