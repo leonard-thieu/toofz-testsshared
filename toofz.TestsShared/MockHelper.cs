@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
@@ -10,6 +11,9 @@ namespace toofz.TestsShared
     {
         public static Mock<DbSet<TEntity>> MockSet<TEntity>(IEnumerable<TEntity> data) where TEntity : class
         {
+            if (data == null)
+                throw new ArgumentNullException(nameof(data), $"{nameof(data)} is null.");
+
             var queryable = data.AsQueryable();
 
             var mockSet = new Mock<DbSet<TEntity>>();
@@ -24,6 +28,11 @@ namespace toofz.TestsShared
             mockQueryable.Setup(m => m.GetEnumerator()).Returns(queryable.GetEnumerator());
 
             return mockSet;
+        }
+
+        public static Mock<DbSet<TEntity>> MockSet<TEntity>(params TEntity[] entities) where TEntity : class
+        {
+            return MockSet((IEnumerable<TEntity>)entities);
         }
     }
 }

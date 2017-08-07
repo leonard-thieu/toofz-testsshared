@@ -1,4 +1,4 @@
-version: 1.1.0.{build}
+version: 1.2.0.{build}
 image: Visual Studio 2017
 
 configuration:
@@ -17,6 +17,9 @@ build:
   verbosity: minimal
 after_build:
   - nuget pack "toofz.TestsShared\toofz.TestsShared.csproj" -Properties "Configuration=%CONFIGURATION%;Platform=AnyCPU" -Symbols
+
+test_script:
+  - vstest.console /logger:Appveyor "toofz.TestsShared.Tests\bin\%CONFIGURATION%\toofz.TestsShared.Tests.dll"
 
 artifacts:
   - path: '*.nupkg'
