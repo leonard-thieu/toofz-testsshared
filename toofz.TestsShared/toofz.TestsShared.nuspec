@@ -1,16 +1,16 @@
 <?xml version="1.0"?>
 <package>
-    <metadata>
-        <id>toofz.TestsShared</id>
-        <version>1.3.0</version>
-        <title>toofz.TestsShared</title>
-        <authors>Leonard Thieu</authors>
-        <owners>Leonard Thieu</owners>
-        <licenseUrl>https://github.com/leonard-thieu/toofz-testsshared/blob/8e5e8dc7f0f4f682e7e97663e356e0f367a7bd8a/LICENSE</licenseUrl>
-        <projectUrl>https://github.com/leonard-thieu/toofz-testsshared</projectUrl>
-        <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>Utility library for testing.</description>
-        <copyright>Copyright 2017</copyright>
-        <tags>toofz utility test</tags>
-    </metadata>
+  <metadata>
+    <id>toofz.TestsShared</id>
+    <version>1.3.0</version>
+    <title>toofz.TestsShared</title>
+    <authors>Leonard Thieu</authors>
+    <owners>Leonard Thieu</owners>
+    <licenseUrl>https://github.com/leonard-thieu/toofz-testsshared/blob/8e5e8dc7f0f4f682e7e97663e356e0f367a7bd8a/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/leonard-thieu/toofz-testsshared</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Utility library for testing.</description>
+    <copyright>Copyright 2017</copyright>
+    <tags>toofz utility test</tags>
+  </metadata>
 </package>
