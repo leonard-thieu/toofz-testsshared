@@ -1,8 +1,14 @@
-version: 1.3.0.{build}
+version: 1.4.0.{build}
 image: Visual Studio 2017
 
 configuration:
   - Release
+environment:
+  PROJECT: toofz.TestsShared
+  COVERALLS_REPO_TOKEN:
+    secure: K8eygAC5XfbsxJjLQwxQwrRX1zqxtfJPxpw1vUxYxEI8OduZRRhYfiLZ40tbD9s9
+  COVERALLS_SERVICE_NAME: appveyor
+  COVERALLS_SERVICE_JOB_ID: '%APPVEYOR_JOB_ID%'
 cache:
   - packages -> **\packages.config
 notifications:
@@ -13,22 +19,13 @@ notifications:
 before_build:
   - appveyor-retry nuget restore -DisableParallelProcessing
 build:
-  project: toofz.TestsShared.sln
+  project: $(PROJECT).sln
   verbosity: minimal
-after_build:
-  - nuget pack "toofz.TestsShared\toofz.TestsShared.csproj" -Properties "Configuration=%CONFIGURATION%;Platform=AnyCPU" -Symbols
 
 test_script:
-  - vstest.console /logger:Appveyor "toofz.TestsShared.Tests\bin\%CONFIGURATION%\toofz.TestsShared.Tests.dll"
+  - ps: .\Test-Project.ps1 -Assembly $env:PROJECT
+after_test:
+  - ps: .\Submit-CodeCoverageResults.ps1
 
-artifacts:
-  - path: '*.nupkg'
-
-deploy:
-  - provider: NuGet
-    symbol_server: https://ci.appveyor.com/nuget/leonard-thieu-h8hvbe0oe9o1/api/v2/package
-    api_key:
-      secure: NYFwcZ6c2123bMRxjnMflURWFm9/dgsS42R38FGa+8o=
-    artifact: /.*\.nupkg/
-    on:
-      appveyor_repo_tag: true
+deploy_script:
+  - ps: .\Deploy-NuGetPackage.ps1
