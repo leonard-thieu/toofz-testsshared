@@ -5,6 +5,10 @@ configuration:
   - Release
 environment:
   PROJECT: toofz.TestsShared
+  COVERALLS_REPO_TOKEN:
+    secure: K8eygAC5XfbsxJjLQwxQwrRX1zqxtfJPxpw1vUxYxEI8OduZRRhYfiLZ40tbD9s9
+  COVERALLS_SERVICE_NAME: appveyor
+  COVERALLS_SERVICE_JOB_ID: '%APPVEYOR_JOB_ID%'
 cache:
   - packages -> **\packages.config
 notifications:
@@ -15,7 +19,7 @@ notifications:
 before_build:
   - appveyor-retry nuget restore -DisableParallelProcessing
 build:
-  project: toofz.TestsShared.sln
+  project: $(PROJECT).sln
   verbosity: minimal
 
 test_script:
