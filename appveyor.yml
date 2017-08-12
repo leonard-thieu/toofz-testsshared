@@ -19,7 +19,9 @@ build:
   verbosity: minimal
 
 test_script:
-  - vstest.console /logger:Appveyor "toofz.TestsShared.Tests\bin\%CONFIGURATION%\toofz.TestsShared.Tests.dll"
+  - ps: .\Test-Project.ps1 -Assembly $env:PROJECT
+after_test:
+  - ps: .\Submit-CodeCoverageResults.ps1
 
 deploy_script:
   - ps: .\Deploy-NuGetPackage.ps1
