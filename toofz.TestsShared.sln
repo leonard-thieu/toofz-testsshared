@@ -10,10 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution files", "Solution files", "{6C468F69-D24D-435B-862E-4BE9DB2E8369}"
 	ProjectSection(SolutionItems) = preProject
 		appveyor.yml = appveyor.yml
-		Deploy-NuGetPackage.ps1 = Deploy-NuGetPackage.ps1
 		README.md = README.md
-		Submit-CodeCoverageResults.ps1 = Submit-CodeCoverageResults.ps1
-		Test-Project.ps1 = Test-Project.ps1
 	EndProjectSection
 EndProject
 Global
