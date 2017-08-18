@@ -17,14 +17,11 @@ namespace toofz.TestsShared.Tests
                 // Arrange
                 IEnumerable<object> data = null;
 
-                // Act
-                var ex = Record.Exception(() =>
+                // Act -> Assert
+                Assert.ThrowsException<ArgumentNullException>(() =>
                 {
                     MockHelper.MockSet(data);
                 });
-
-                // Assert
-                Assert.IsInstanceOfType(ex, typeof(ArgumentNullException));
             }
 
             [TestMethod]
