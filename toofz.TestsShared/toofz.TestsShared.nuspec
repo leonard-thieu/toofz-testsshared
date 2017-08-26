@@ -8,6 +8,7 @@
     <owners>Leonard Thieu</owners>
     <licenseUrl>https://github.com/leonard-thieu/toofz-testsshared/blob/8e5e8dc7f0f4f682e7e97663e356e0f367a7bd8a/LICENSE</licenseUrl>
     <projectUrl>https://github.com/leonard-thieu/toofz-testsshared</projectUrl>
+    <iconUrl>https://user-images.githubusercontent.com/5265970/29717713-27e1a95c-897e-11e7-9d28-dae64be705b5.png</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Utility library for testing.</description>
     <copyright>Copyright 2017</copyright>
