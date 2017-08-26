@@ -18,27 +18,33 @@ namespace toofz.TestsShared
             FileName = AzureStorageEmulatorPath,
             Arguments = "start",
             UseShellExecute = false,
-            WindowStyle = ProcessWindowStyle.Hidden,
         };
 
         static readonly ProcessStartInfo stopStorageEmulator = new ProcessStartInfo
         {
             FileName = AzureStorageEmulatorPath,
             Arguments = "stop",
+            UseShellExecute = false,
         };
 
         static Process GetProcess()
         {
-            return Process.GetProcessesByName(Win10ProcessName).FirstOrDefault() ??
+            return Process.GetProcessesByName(Win7ProcessName).FirstOrDefault() ??
                    Process.GetProcessesByName(Win8ProcessName).FirstOrDefault() ??
-                   Process.GetProcessesByName(Win7ProcessName).FirstOrDefault();
+                   Process.GetProcessesByName(Win10ProcessName).FirstOrDefault();
         }
 
-        public static bool IsProcessStarted()
-        {
-            return GetProcess() != null;
-        }
+        /// <summary>
+        /// Gets a value indicating if Azure Storage Emulator is started.
+        /// </summary>
+        /// <returns>
+        /// True, if Azure Storage Emulator is started; otherwise, false.
+        /// </returns>
+        public static bool IsProcessStarted() => GetProcess() != null;
 
+        /// <summary>
+        /// Starts Azure Storage Emulator if it is not already started.
+        /// </summary>
         public static void StartStorageEmulator()
         {
             if (IsProcessStarted())
@@ -51,6 +57,9 @@ namespace toofz.TestsShared
             }
         }
 
+        /// <summary>
+        /// Stops Azure Storage Emulator.
+        /// </summary>
         public static void StopStorageEmulator()
         {
             using (var process = Process.Start(stopStorageEmulator))
