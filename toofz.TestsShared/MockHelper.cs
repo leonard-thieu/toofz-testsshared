@@ -9,10 +9,11 @@ namespace toofz.TestsShared
 {
     public static class MockHelper
     {
-        public static Mock<DbSet<TEntity>> MockSet<TEntity>(IEnumerable<TEntity> data) where TEntity : class
+        public static Mock<DbSet<TEntity>> MockSet<TEntity>(IEnumerable<TEntity> data)
+            where TEntity : class
         {
             if (data == null)
-                throw new ArgumentNullException(nameof(data), $"{nameof(data)} is null.");
+                throw new ArgumentNullException(nameof(data));
 
             var queryable = data.AsQueryable();
 
@@ -30,7 +31,8 @@ namespace toofz.TestsShared
             return mockSet;
         }
 
-        public static Mock<DbSet<TEntity>> MockSet<TEntity>(params TEntity[] entities) where TEntity : class
+        public static Mock<DbSet<TEntity>> MockSet<TEntity>(params TEntity[] entities)
+            where TEntity : class
         {
             return MockSet((IEnumerable<TEntity>)entities);
         }
