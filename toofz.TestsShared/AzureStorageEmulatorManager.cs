@@ -38,19 +38,17 @@ namespace toofz.TestsShared
         /// Gets a value indicating if Azure Storage Emulator is started.
         /// </summary>
         /// <returns>
-        /// True, if Azure Storage Emulator is started; otherwise, false.
+        /// true, if Azure Storage Emulator is started; otherwise, false.
         /// </returns>
-        public static bool IsProcessStarted() => GetProcess() != null;
+        public static bool IsStarted() => GetProcess() != null;
 
         /// <summary>
         /// Starts Azure Storage Emulator if it is not already started.
         /// </summary>
-        public static void StartStorageEmulator()
+        public static void Start()
         {
-            if (IsProcessStarted())
-            {
-                return;
-            }
+            if (IsStarted()) { return; }
+
             using (var process = Process.Start(startStorageEmulator))
             {
                 process.WaitForExit();
@@ -60,7 +58,7 @@ namespace toofz.TestsShared
         /// <summary>
         /// Stops Azure Storage Emulator.
         /// </summary>
-        public static void StopStorageEmulator()
+        public static void Stop()
         {
             using (var process = Process.Start(stopStorageEmulator))
             {
