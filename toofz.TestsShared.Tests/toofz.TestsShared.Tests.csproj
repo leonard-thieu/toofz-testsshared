@@ -79,7 +79,7 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssertHelperTests.cs" />
+    <Compile Include="AssertExtensionsTests.cs" />
     <Compile Include="MockedRequestExtensionsTests.cs" />
     <Compile Include="MockHelperTests.cs" />
     <Compile Include="MockHttpMessageHandlerExtensionsTests.cs" />

@@ -1,12 +1,16 @@
-﻿using System.Text.RegularExpressions;
+﻿using System;
+using System.Text.RegularExpressions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace toofz.TestsShared
 {
-    public static class AssertHelper
+    public static class AssertExtensions
     {
-        public static void NormalizedAreEqual(string expected, string actual)
+        public static void NormalizedAreEqual(this Assert assert, string expected, string actual)
         {
+            if (assert == null)
+                throw new ArgumentNullException(nameof(assert));
+
             if (expected != null && actual != null)
             {
                 expected = Regex.Replace(expected, "\r?\n", "\r\n");

@@ -71,7 +71,7 @@
     <None Include="toofz.TestsShared.nuspec" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AssertHelper.cs" />
+    <Compile Include="AssertExtensions.cs" />
     <Compile Include="AzureStorageEmulatorManager.cs" />
     <Compile Include="MockedRequestExtensions.cs" />
     <Compile Include="MockHelper.cs" />
