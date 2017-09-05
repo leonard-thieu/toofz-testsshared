@@ -60,6 +60,8 @@ namespace toofz.TestsShared
         /// </summary>
         public static void Stop()
         {
+            if (!IsStarted()) { return; }
+
             using (var process = Process.Start(stopStorageEmulator))
             {
                 process.WaitForExit();
