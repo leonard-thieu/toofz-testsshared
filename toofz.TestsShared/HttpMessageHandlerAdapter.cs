@@ -8,14 +8,14 @@ namespace toofz.TestsShared
     /// Wraps an instance of <see cref="HttpMessageHandler"/> so that its <see cref="HttpMessageHandler.SendAsync(HttpRequestMessage, CancellationToken)"/> 
     /// method can be tested.
     /// </summary>
-    public sealed class TestingHttpMessageHandler : DelegatingHandler
+    public sealed class HttpMessageHandlerAdapter : DelegatingHandler
     {
         /// <summary>
-        /// Initializes an instance of the <see cref="TestingHttpMessageHandler"/> class with a
+        /// Initializes an instance of the <see cref="HttpMessageHandlerAdapter"/> class with a
         /// specific inner handler.
         /// </summary>
         /// <param name="innerHandler">The <see cref="HttpMessageHandler"/> to be tested.</param>
-        public TestingHttpMessageHandler(HttpMessageHandler innerHandler) : base(innerHandler) { }
+        public HttpMessageHandlerAdapter(HttpMessageHandler innerHandler) : base(innerHandler) { }
 
         /// <summary>
         /// Sends an HTTP request to the inner handler to send to the server as an asynchronous operation.
@@ -28,7 +28,7 @@ namespace toofz.TestsShared
         /// <exception cref="System.ArgumentNullException">
         /// The request was null.
         /// </exception>
-        public Task<HttpResponseMessage> TestSendAsync(
+        public Task<HttpResponseMessage> PublicSendAsync(
             HttpRequestMessage request,
             CancellationToken cancellationToken = default(CancellationToken))
         {

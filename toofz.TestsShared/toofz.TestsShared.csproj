@@ -73,12 +73,12 @@
   <ItemGroup>
     <Compile Include="AssertExtensions.cs" />
     <Compile Include="AzureStorageEmulatorManager.cs" />
+    <Compile Include="HttpMessageHandlerAdapter.cs" />
     <Compile Include="MockedRequestExtensions.cs" />
     <Compile Include="MockHelper.cs" />
     <Compile Include="MockHttpMessageHandlerExtensions.cs" />
     <Compile Include="TestDbAsyncEnumerator.cs" />
     <Compile Include="TestDbAsyncQueryProvider.cs" />
-    <Compile Include="TestingHttpMessageHandler.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

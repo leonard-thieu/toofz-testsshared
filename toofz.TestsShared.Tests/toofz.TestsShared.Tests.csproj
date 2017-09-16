@@ -80,10 +80,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssertExtensionsTests.cs" />
+    <Compile Include="HttpMessageHandlerAdapterTests.cs" />
     <Compile Include="MockedRequestExtensionsTests.cs" />
     <Compile Include="MockHelperTests.cs" />
     <Compile Include="MockHttpMessageHandlerExtensionsTests.cs" />
-    <Compile Include="TestingHttpMessageHandlerTests.cs" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -7,7 +7,7 @@ using Moq;
 
 namespace toofz.TestsShared.Tests
 {
-    class TestingHttpMessageHandlerTests
+    class HttpMessageHandlerAdapterTests
     {
         [TestClass]
         public class Constructor
@@ -20,15 +20,15 @@ namespace toofz.TestsShared.Tests
                 var innerHandler = mockInnerHandler.Object;
 
                 // Act
-                var handler = new TestingHttpMessageHandler(innerHandler);
+                var handler = new HttpMessageHandlerAdapter(innerHandler);
 
                 // Assert
-                Assert.IsInstanceOfType(handler, typeof(TestingHttpMessageHandler));
+                Assert.IsInstanceOfType(handler, typeof(HttpMessageHandlerAdapter));
             }
         }
 
         [TestClass]
-        public class TestSendAsync
+        public class PublicSendAsync
         {
             [TestMethod]
             public async Task RequestIsNull_ThrowsArgumentNullException()
@@ -36,13 +36,13 @@ namespace toofz.TestsShared.Tests
                 // Arrange
                 var mockInnerHandler = new Mock<HttpMessageHandler>();
                 var innerHandler = mockInnerHandler.Object;
-                var handler = new TestingHttpMessageHandler(innerHandler);
+                var handler = new HttpMessageHandlerAdapter(innerHandler);
                 HttpRequestMessage request = null;
 
                 // Act -> Assert
                 await Assert.ThrowsExceptionAsync<ArgumentNullException>(() =>
                 {
-                    return handler.TestSendAsync(request);
+                    return handler.PublicSendAsync(request);
                 });
             }
 
@@ -51,11 +51,11 @@ namespace toofz.TestsShared.Tests
             {
                 // Arrange
                 var innerHandler = new MockHttpMessageHandler();
-                var handler = new TestingHttpMessageHandler(innerHandler);
+                var handler = new HttpMessageHandlerAdapter(innerHandler);
                 HttpRequestMessage request = new HttpRequestMessage();
 
                 // Act
-                await handler.TestSendAsync(request);
+                await handler.PublicSendAsync(request);
 
                 // Assert
                 Assert.IsTrue(innerHandler.SendAsyncCalled);
