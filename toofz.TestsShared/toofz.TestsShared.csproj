@@ -52,9 +52,6 @@
     <Reference Include="Moq, Version=4.7.99.0, Culture=neutral, PublicKeyToken=69f491c39445e920, processorArchitecture=MSIL">
       <HintPath>..\packages\Moq.4.7.99\lib\net45\Moq.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
     <Reference Include="RichardSzalay.MockHttp, Version=3.2.1.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\RichardSzalay.MockHttp.3.2.1\lib\net45\RichardSzalay.MockHttp.dll</HintPath>
     </Reference>
@@ -74,7 +71,6 @@
     <Compile Include="AssertExtensions.cs" />
     <Compile Include="AzureStorageEmulatorManager.cs" />
     <Compile Include="HttpMessageHandlerAdapter.cs" />
-    <Compile Include="MockedRequestExtensions.cs" />
     <Compile Include="MockHelper.cs" />
     <Compile Include="MockHttpMessageHandlerExtensions.cs" />
     <Compile Include="TestDbAsyncEnumerator.cs" />
