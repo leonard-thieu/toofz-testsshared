@@ -80,8 +80,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AssertExtensionsTests.cs" />
+    <Compile Include="FakeDbAsyncEnumerableTests.cs" />
+    <Compile Include="FakeDbAsyncEnumeratorTests.cs" />
+    <Compile Include="FakeDbAsyncQueryProviderTests.cs" />
     <Compile Include="HttpMessageHandlerAdapterTests.cs" />
-    <Compile Include="MockHelperTests.cs" />
+    <Compile Include="MockDbSetTests.cs" />
     <Compile Include="MockHttpMessageHandlerExtensionsTests.cs" />
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

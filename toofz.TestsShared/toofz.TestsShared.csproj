@@ -60,6 +60,8 @@
     <Reference Include="System.Net.Http" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FakeDbAsyncEnumerable.cs" />
+    <Compile Include="MockDbSet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="App.config" />
     <None Include="packages.config">
@@ -71,10 +73,9 @@
     <Compile Include="AssertExtensions.cs" />
     <Compile Include="AzureStorageEmulatorManager.cs" />
     <Compile Include="HttpMessageHandlerAdapter.cs" />
-    <Compile Include="MockHelper.cs" />
     <Compile Include="MockHttpMessageHandlerExtensions.cs" />
-    <Compile Include="TestDbAsyncEnumerator.cs" />
-    <Compile Include="TestDbAsyncQueryProvider.cs" />
+    <Compile Include="FakeDbAsyncEnumerator.cs" />
+    <Compile Include="FakeDbAsyncQueryProvider.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

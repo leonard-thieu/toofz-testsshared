@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 
 [assembly: AssemblyVersion("3.0.0.0")]
@@ -9,3 +10,5 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("toofz Utilities for Tests")]
 
 [assembly: ComVisible(false)]
+
+[assembly: InternalsVisibleTo("toofz.TestsShared.Tests")]

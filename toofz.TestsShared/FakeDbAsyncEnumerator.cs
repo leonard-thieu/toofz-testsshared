@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace toofz.TestsShared
 {
-    sealed class TestDbAsyncEnumerator<T> : IDbAsyncEnumerator<T>
+    sealed class FakeDbAsyncEnumerator<T> : IDbAsyncEnumerator<T>
     {
-        public TestDbAsyncEnumerator(IEnumerator<T> inner)
+        public FakeDbAsyncEnumerator(IEnumerator<T> inner)
         {
             this.inner = inner;
         }
