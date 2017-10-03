@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -8,6 +9,20 @@ namespace toofz.TestsShared.Tests
 {
     class MockDbSetTests
     {
+        [TestClass]
+        public class OfMethod
+        {
+            [TestMethod]
+            public void ReturnsInstance()
+            {
+                // Arrange -> Act
+                var mockObjects = MockDbSet<object>.Of();
+
+                // Assert
+                Assert.IsInstanceOfType(mockObjects, typeof(DbSet<object>));
+            }
+        }
+
         [TestClass]
         public class Constructor_IEnumerable_TEntity
         {
@@ -142,6 +157,42 @@ namespace toofz.TestsShared.Tests
 
                 // Assert
                 Assert.IsNotNull(enumerator);
+            }
+        }
+
+        [TestClass]
+        public class AsNoTrackingMethod
+        {
+            [TestMethod]
+            public void ReturnsDbSet()
+            {
+                // Arrange
+                var mockDbSet = new MockDbSet<object>();
+                var dbSet = mockDbSet.Object;
+
+                // Act
+                var dbSet2 = dbSet.AsNoTracking();
+
+                // Assert
+                Assert.IsInstanceOfType(dbSet2, typeof(DbSet<object>));
+            }
+        }
+
+        [TestClass]
+        public class IncludeMethod
+        {
+            [TestMethod]
+            public void ReturnsDbSet()
+            {
+                // Arrange
+                var mockDbSet = new MockDbSet<string>();
+                var dbSet = mockDbSet.Object;
+
+                // Act
+                var dbSet2 = dbSet.Include(d => d.Length);
+
+                // Assert
+                Assert.IsInstanceOfType(dbSet2, typeof(DbSet<string>));
             }
         }
     }
