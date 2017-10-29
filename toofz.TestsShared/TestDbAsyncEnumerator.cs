@@ -5,14 +5,15 @@ using System.Threading.Tasks;
 
 namespace toofz.TestsShared
 {
-    sealed class FakeDbAsyncEnumerator<T> : IDbAsyncEnumerator<T>
+    // https://msdn.microsoft.com/library/dn314429.aspx
+    internal sealed class TestDbAsyncEnumerator<T> : IDbAsyncEnumerator<T>
     {
-        public FakeDbAsyncEnumerator(IEnumerator<T> inner)
+        public TestDbAsyncEnumerator(IEnumerator<T> inner)
         {
             this.inner = inner;
         }
 
-        readonly IEnumerator<T> inner;
+        private readonly IEnumerator<T> inner;
 
         public T Current => inner.Current;
         object IDbAsyncEnumerator.Current => Current;

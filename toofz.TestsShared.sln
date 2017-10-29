@@ -1,17 +1,17 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.26730.15
+VisualStudioVersion = 15.0.27004.2005
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "toofz.TestsShared", "toofz.TestsShared\toofz.TestsShared.csproj", "{2AFFA5E8-63A0-447F-86FA-39FB0D3998D7}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "toofz.TestsShared.Tests", "toofz.TestsShared.Tests\toofz.TestsShared.Tests.csproj", "{CC00687B-5A31-469D-8B53-2A4981CC9974}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution files", "Solution files", "{6C468F69-D24D-435B-862E-4BE9DB2E8369}"
 	ProjectSection(SolutionItems) = preProject
 		appveyor.yml = appveyor.yml
 		README.md = README.md
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "toofz.TestsShared", "toofz.TestsShared\toofz.TestsShared.csproj", "{4A5AE680-9F53-4495-8AED-75DD26A73BB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "toofz.TestsShared.Tests", "toofz.TestsShared.Tests\toofz.TestsShared.Tests.csproj", "{2215CA1A-27B3-410B-B713-DDED65F86D34}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -19,14 +19,14 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2AFFA5E8-63A0-447F-86FA-39FB0D3998D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2AFFA5E8-63A0-447F-86FA-39FB0D3998D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2AFFA5E8-63A0-447F-86FA-39FB0D3998D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2AFFA5E8-63A0-447F-86FA-39FB0D3998D7}.Release|Any CPU.Build.0 = Release|Any CPU
-		{CC00687B-5A31-469D-8B53-2A4981CC9974}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{CC00687B-5A31-469D-8B53-2A4981CC9974}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{CC00687B-5A31-469D-8B53-2A4981CC9974}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{CC00687B-5A31-469D-8B53-2A4981CC9974}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4A5AE680-9F53-4495-8AED-75DD26A73BB0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A5AE680-9F53-4495-8AED-75DD26A73BB0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A5AE680-9F53-4495-8AED-75DD26A73BB0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A5AE680-9F53-4495-8AED-75DD26A73BB0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2215CA1A-27B3-410B-B713-DDED65F86D34}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2215CA1A-27B3-410B-B713-DDED65F86D34}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2215CA1A-27B3-410B-B713-DDED65F86D34}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2215CA1A-27B3-410B-B713-DDED65F86D34}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

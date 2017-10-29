@@ -6,18 +6,19 @@ using System.Threading.Tasks;
 
 namespace toofz.TestsShared
 {
-    sealed class FakeDbAsyncQueryProvider<TEntity> : IDbAsyncQueryProvider
+    // https://msdn.microsoft.com/library/dn314429.aspx
+    internal sealed class TestDbAsyncQueryProvider<TEntity> : IDbAsyncQueryProvider
     {
-        public FakeDbAsyncQueryProvider(IQueryProvider inner)
+        public TestDbAsyncQueryProvider(IQueryProvider inner)
         {
             this.inner = inner;
         }
 
-        readonly IQueryProvider inner;
+        private readonly IQueryProvider inner;
 
-        public IQueryable CreateQuery(Expression expression) => new FakeDbAsyncEnumerable<TEntity>(expression);
+        public IQueryable CreateQuery(Expression expression) => new TestDbAsyncEnumerable<TEntity>(expression);
 
-        public IQueryable<TElement> CreateQuery<TElement>(Expression expression) => new FakeDbAsyncEnumerable<TElement>(expression);
+        public IQueryable<TElement> CreateQuery<TElement>(Expression expression) => new TestDbAsyncEnumerable<TElement>(expression);
 
         public object Execute(Expression expression) => inner.Execute(expression);
 

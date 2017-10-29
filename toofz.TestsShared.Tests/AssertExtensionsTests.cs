@@ -3,7 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace toofz.TestsShared.Tests
 {
-    class AssertExtensionsTests
+    internal class AssertExtensionsTests
     {
         [TestClass]
         public class NormalizedAreEqual
@@ -13,8 +13,8 @@ namespace toofz.TestsShared.Tests
             {
                 // Arrange
                 Assert assert = null;
-                string expected = "expected";
-                string actual = "actual";
+                var expected = "expected";
+                var actual = "actual";
 
                 // Act -> Assert
                 Assert.ThrowsException<ArgumentNullException>(() =>
@@ -29,7 +29,7 @@ namespace toofz.TestsShared.Tests
                 // Arrange
                 Assert assert = Assert.That;
                 string expected = null;
-                string actual = "actual";
+                var actual = "actual";
 
                 // Act -> Assert
                 Assert.ThrowsException<AssertFailedException>(() =>
@@ -43,7 +43,7 @@ namespace toofz.TestsShared.Tests
             {
                 // Arrange
                 Assert assert = Assert.That;
-                string expected = "expected";
+                var expected = "expected";
                 string actual = null;
 
                 // Act -> Assert

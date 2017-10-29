@@ -7,7 +7,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace toofz.TestsShared.Tests
 {
-    class MockDbSetTests
+    internal class MockDbSetTests
     {
         [TestClass]
         public class OfMethod

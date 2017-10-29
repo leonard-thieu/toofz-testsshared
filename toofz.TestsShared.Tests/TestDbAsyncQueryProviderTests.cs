@@ -7,7 +7,7 @@ using Moq;
 
 namespace toofz.TestsShared.Tests
 {
-    class FakeDbAsyncQueryProviderTests
+    internal class TestDbAsyncQueryProviderTests
     {
         [TestClass]
         public class Constructor
@@ -19,10 +19,10 @@ namespace toofz.TestsShared.Tests
                 var inner = Mock.Of<IQueryProvider>();
 
                 // Act
-                var provider = new FakeDbAsyncQueryProvider<double>(inner);
+                var provider = new TestDbAsyncQueryProvider<double>(inner);
 
                 // Assert
-                Assert.IsInstanceOfType(provider, typeof(FakeDbAsyncQueryProvider<double>));
+                Assert.IsInstanceOfType(provider, typeof(TestDbAsyncQueryProvider<double>));
             }
         }
 
@@ -34,7 +34,7 @@ namespace toofz.TestsShared.Tests
             {
                 // Arrange
                 var inner = Mock.Of<IQueryProvider>();
-                var provider = new FakeDbAsyncQueryProvider<double>(inner);
+                var provider = new TestDbAsyncQueryProvider<double>(inner);
                 var expression = Expression.Constant(5.5);
 
                 // Act
@@ -53,7 +53,7 @@ namespace toofz.TestsShared.Tests
             {
                 // Arrange
                 var inner = Mock.Of<IQueryProvider>();
-                var provider = new FakeDbAsyncQueryProvider<double>(inner);
+                var provider = new TestDbAsyncQueryProvider<double>(inner);
                 var expression = Expression.Constant(5.5);
 
                 // Act
@@ -74,7 +74,7 @@ namespace toofz.TestsShared.Tests
                 var mockInner = new Mock<IQueryProvider>();
                 mockInner.Setup(i => i.Execute(It.IsAny<Expression>())).Returns(5.5);
                 var inner = mockInner.Object;
-                var provider = new FakeDbAsyncQueryProvider<double>(inner);
+                var provider = new TestDbAsyncQueryProvider<double>(inner);
                 var expression = Expression.Constant(5.5);
 
                 // Act
@@ -95,7 +95,7 @@ namespace toofz.TestsShared.Tests
                 var mockInner = new Mock<IQueryProvider>();
                 mockInner.Setup(i => i.Execute<double>(It.IsAny<Expression>())).Returns(5.5);
                 var inner = mockInner.Object;
-                var provider = new FakeDbAsyncQueryProvider<double>(inner);
+                var provider = new TestDbAsyncQueryProvider<double>(inner);
                 var expression = Expression.Constant(5.5);
 
                 // Act
@@ -116,7 +116,7 @@ namespace toofz.TestsShared.Tests
                 var mockInner = new Mock<IQueryProvider>();
                 mockInner.Setup(i => i.Execute(It.IsAny<Expression>())).Returns(5.5);
                 var inner = mockInner.Object;
-                var provider = new FakeDbAsyncQueryProvider<double>(inner);
+                var provider = new TestDbAsyncQueryProvider<double>(inner);
                 var expression = Expression.Constant(5.5);
                 var cancellationToken = CancellationToken.None;
 
@@ -138,7 +138,7 @@ namespace toofz.TestsShared.Tests
                 var mockInner = new Mock<IQueryProvider>();
                 mockInner.Setup(i => i.Execute<double>(It.IsAny<Expression>())).Returns(5.5);
                 var inner = mockInner.Object;
-                var provider = new FakeDbAsyncQueryProvider<double>(inner);
+                var provider = new TestDbAsyncQueryProvider<double>(inner);
                 var expression = Expression.Constant(5.5);
                 var cancellationToken = CancellationToken.None;
 

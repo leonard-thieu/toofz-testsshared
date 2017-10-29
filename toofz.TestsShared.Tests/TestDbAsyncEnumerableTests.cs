@@ -5,7 +5,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace toofz.TestsShared.Tests
 {
-    class FakeDbAsyncEnumerableTests
+    internal class TestDbAsyncEnumerableTests
     {
         [TestClass]
         public class Constructor
@@ -17,10 +17,10 @@ namespace toofz.TestsShared.Tests
                 var expression = Expression.Constant(new[] { 5.5 });
 
                 // Act
-                var enumerable = new FakeDbAsyncEnumerable<double>(expression);
+                var enumerable = new TestDbAsyncEnumerable<double>(expression);
 
                 // Assert
-                Assert.IsInstanceOfType(enumerable, typeof(FakeDbAsyncEnumerable<double>));
+                Assert.IsInstanceOfType(enumerable, typeof(TestDbAsyncEnumerable<double>));
             }
         }
 
@@ -32,7 +32,7 @@ namespace toofz.TestsShared.Tests
             {
                 // Arrange
                 var expression = Expression.Constant(new[] { 5.5 });
-                var enumerable = new FakeDbAsyncEnumerable<double>(expression);
+                var enumerable = new TestDbAsyncEnumerable<double>(expression);
 
                 // Act
                 var asyncEnumerator = enumerable.GetAsyncEnumerator();
@@ -50,7 +50,7 @@ namespace toofz.TestsShared.Tests
             {
                 // Arrange
                 var expression = Expression.Constant(new[] { 5.5 });
-                var enumerable = new FakeDbAsyncEnumerable<double>(expression);
+                var enumerable = new TestDbAsyncEnumerable<double>(expression);
                 var asyncEnumerable = (IDbAsyncEnumerable)enumerable;
 
                 // Act
@@ -69,7 +69,7 @@ namespace toofz.TestsShared.Tests
             {
                 // Arrange
                 var expression = Expression.Constant(new[] { 5.5 });
-                var enumerable = new FakeDbAsyncEnumerable<double>(expression);
+                var enumerable = new TestDbAsyncEnumerable<double>(expression);
                 var queryable = (IQueryable)enumerable;
 
                 // Act

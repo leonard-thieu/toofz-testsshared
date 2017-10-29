@@ -10,26 +10,26 @@ namespace toofz.TestsShared
     [ExcludeFromCodeCoverage]
     public static class AzureStorageEmulatorManager
     {
-        const string AzureStorageEmulatorPath = @"C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator\AzureStorageEmulator.exe";
-        const string Win7ProcessName = "WAStorageEmulator";
-        const string Win8ProcessName = "WASTOR~1";
-        const string Win10ProcessName = "AzureStorageEmulator";
+        private const string AzureStorageEmulatorPath = @"C:\Program Files (x86)\Microsoft SDKs\Azure\Storage Emulator\AzureStorageEmulator.exe";
+        private const string Win7ProcessName = "WAStorageEmulator";
+        private const string Win8ProcessName = "WASTOR~1";
+        private const string Win10ProcessName = "AzureStorageEmulator";
 
-        static readonly ProcessStartInfo startStorageEmulator = new ProcessStartInfo
+        private static readonly ProcessStartInfo startStorageEmulator = new ProcessStartInfo
         {
             FileName = AzureStorageEmulatorPath,
             Arguments = "start",
             UseShellExecute = false,
         };
 
-        static readonly ProcessStartInfo stopStorageEmulator = new ProcessStartInfo
+        private static readonly ProcessStartInfo stopStorageEmulator = new ProcessStartInfo
         {
             FileName = AzureStorageEmulatorPath,
             Arguments = "stop",
             UseShellExecute = false,
         };
 
-        static Process GetProcess()
+        private static Process GetProcess()
         {
             return Process.GetProcessesByName(Win7ProcessName).FirstOrDefault() ??
                    Process.GetProcessesByName(Win8ProcessName).FirstOrDefault() ??
