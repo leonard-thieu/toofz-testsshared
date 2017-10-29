@@ -19,10 +19,11 @@ assembly_info:
   assembly_version: $(appveyor_build_version)
 
 install:
+  - nuget update -self
   - git clone https://github.com/leonard-thieu/toofz-build.git Scripts
   
 before_build:
-  - appveyor-retry nuget restore -Verbosity quiet
+  - appveyor-retry nuget restore -PackagesDirectory packages -Verbosity quiet
 build:
   project: $(PROJECT).sln
   verbosity: minimal
