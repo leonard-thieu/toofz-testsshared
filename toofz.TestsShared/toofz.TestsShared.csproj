@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>5.0.0</Version>
+    <Version>5.0.1</Version>
     <Authors>Leonard Thieu</Authors>
     <Product>toofz Utilities for Tests</Product>
     <Description>Utility library for testing.</Description>
