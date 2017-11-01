@@ -24,7 +24,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="EntityFramework" Version="6.2.0" />
+    <PackageReference Include="EntityFramework" Version="6.2.0" NoWarn="NU1701" />
     <PackageReference Include="Moq" Version="4.7.142" />
   </ItemGroup>
 
