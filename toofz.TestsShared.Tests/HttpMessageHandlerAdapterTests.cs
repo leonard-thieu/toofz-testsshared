@@ -2,16 +2,15 @@
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace toofz.TestsShared.Tests
 {
-    internal class HttpMessageHandlerAdapterTests
+    public class HttpMessageHandlerAdapterTests
     {
-        [TestClass]
         public class Constructor
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsInstance()
             {
                 // Arrange
@@ -21,14 +20,13 @@ namespace toofz.TestsShared.Tests
                 var handler = new HttpMessageHandlerAdapter(innerHandler);
 
                 // Assert
-                Assert.IsInstanceOfType(handler, typeof(HttpMessageHandlerAdapter));
+                Assert.IsType<HttpMessageHandlerAdapter>(handler);
             }
         }
 
-        [TestClass]
         public class PublicSendAsync
         {
-            [TestMethod]
+            [Fact]
             public async Task RequestIsNull_ThrowsArgumentNullException()
             {
                 // Arrange
@@ -37,13 +35,13 @@ namespace toofz.TestsShared.Tests
                 HttpRequestMessage request = null;
 
                 // Act -> Assert
-                await Assert.ThrowsExceptionAsync<ArgumentNullException>(() =>
+                await Assert.ThrowsAsync<ArgumentNullException>(() =>
                 {
                     return handler.PublicSendAsync(request);
                 });
             }
 
-            [TestMethod]
+            [Fact]
             public async Task CallsSendAsyncOnInnerHandler()
             {
                 // Arrange
@@ -55,7 +53,7 @@ namespace toofz.TestsShared.Tests
                 await handler.PublicSendAsync(request);
 
                 // Assert
-                Assert.IsTrue(innerHandler.SendAsyncCalled);
+                Assert.True(innerHandler.SendAsyncCalled);
             }
         }
 

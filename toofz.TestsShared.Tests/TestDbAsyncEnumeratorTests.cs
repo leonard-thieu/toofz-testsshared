@@ -2,17 +2,16 @@
 using System.Data.Entity.Infrastructure;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Xunit;
 
 namespace toofz.TestsShared.Tests
 {
-    internal class TestDbAsyncEnumeratorTests
+    public class TestDbAsyncEnumeratorTests
     {
-        [TestClass]
         public class Constructor
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsInstance()
             {
                 // Arrange
@@ -22,14 +21,13 @@ namespace toofz.TestsShared.Tests
                 var enumerator = new TestDbAsyncEnumerator<double>(inner);
 
                 // Assert
-                Assert.IsInstanceOfType(enumerator, typeof(TestDbAsyncEnumerator<double>));
+                Assert.IsType<TestDbAsyncEnumerator<double>>(enumerator);
             }
         }
 
-        [TestClass]
         public class CurrentProperty
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsCurrentElement()
             {
                 // Arrange
@@ -42,14 +40,13 @@ namespace toofz.TestsShared.Tests
                 var current = enumerator.Current;
 
                 // Assert
-                Assert.AreEqual(5.5, current);
+                Assert.Equal(5.5, current);
             }
         }
 
-        [TestClass]
         public class IDbAsyncEnumerator_CurrentProperty
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsCurrentElement()
             {
                 // Arrange
@@ -63,14 +60,13 @@ namespace toofz.TestsShared.Tests
                 var current = asyncEnumerator.Current;
 
                 // Assert
-                Assert.AreEqual(5.5, current);
+                Assert.Equal(5.5, current);
             }
         }
 
-        [TestClass]
         public class MoveNextAsyncMethod
         {
-            [TestMethod]
+            [Fact]
             public async Task CallsMoveNextOnInner()
             {
                 // Arrange
@@ -86,7 +82,7 @@ namespace toofz.TestsShared.Tests
                 mockInner.Verify(i => i.MoveNext(), Times.Once);
             }
 
-            [TestMethod]
+            [Fact]
             public async Task ReturnsValueFromInnerMoveNext()
             {
                 // Arrange
@@ -100,14 +96,13 @@ namespace toofz.TestsShared.Tests
                 var moved = await enumerator.MoveNextAsync(cancellationToken);
 
                 // Assert
-                Assert.IsTrue(moved);
+                Assert.True(moved);
             }
         }
 
-        [TestClass]
         public class DisposeMethod
         {
-            [TestMethod]
+            [Fact]
             public void DisposesInner()
             {
                 // Arrange
