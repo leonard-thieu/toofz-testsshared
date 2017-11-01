@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
-    <Version>4.1.0</Version>
+    <Version>5.0.0</Version>
     <Authors>Leonard Thieu</Authors>
     <Product>toofz Utilities for Tests</Product>
     <Description>Utility library for testing.</Description>
@@ -10,7 +10,6 @@
     <PackageLicenseUrl>https://github.com/leonard-thieu/toofz-utilities-for-tests/blob/8e5e8dc7f0f4f682e7e97663e356e0f367a7bd8a/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/leonard-thieu/toofz-utilities-for-tests</PackageProjectUrl>
     <PackageIconUrl>https://user-images.githubusercontent.com/5265970/29717713-27e1a95c-897e-11e7-9d28-dae64be705b5.png</PackageIconUrl>
-    <PackageTags>toofz utility test</PackageTags>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
   </PropertyGroup>
 
