@@ -2,51 +2,46 @@
 using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Moq;
+using Xunit;
 
 namespace toofz.TestsShared.Tests
 {
-    class HttpMessageHandlerAdapterTests
+    public class HttpMessageHandlerAdapterTests
     {
-        [TestClass]
         public class Constructor
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsInstance()
             {
                 // Arrange
-                var mockInnerHandler = new Mock<HttpMessageHandler>();
-                var innerHandler = mockInnerHandler.Object;
+                var innerHandler = new MockHttpMessageHandler();
 
                 // Act
                 var handler = new HttpMessageHandlerAdapter(innerHandler);
 
                 // Assert
-                Assert.IsInstanceOfType(handler, typeof(HttpMessageHandlerAdapter));
+                Assert.IsType<HttpMessageHandlerAdapter>(handler);
             }
         }
 
-        [TestClass]
         public class PublicSendAsync
         {
-            [TestMethod]
+            [Fact]
             public async Task RequestIsNull_ThrowsArgumentNullException()
             {
                 // Arrange
-                var mockInnerHandler = new Mock<HttpMessageHandler>();
-                var innerHandler = mockInnerHandler.Object;
+                var innerHandler = new MockHttpMessageHandler();
                 var handler = new HttpMessageHandlerAdapter(innerHandler);
                 HttpRequestMessage request = null;
 
                 // Act -> Assert
-                await Assert.ThrowsExceptionAsync<ArgumentNullException>(() =>
+                await Assert.ThrowsAsync<ArgumentNullException>(() =>
                 {
                     return handler.PublicSendAsync(request);
                 });
             }
 
-            [TestMethod]
+            [Fact]
             public async Task CallsSendAsyncOnInnerHandler()
             {
                 // Arrange
@@ -58,19 +53,19 @@ namespace toofz.TestsShared.Tests
                 await handler.PublicSendAsync(request);
 
                 // Assert
-                Assert.IsTrue(innerHandler.SendAsyncCalled);
+                Assert.True(innerHandler.SendAsyncCalled);
             }
+        }
 
-            class MockHttpMessageHandler : HttpMessageHandler
+        private class MockHttpMessageHandler : HttpMessageHandler
+        {
+            public bool SendAsyncCalled { get; private set; }
+
+            protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
             {
-                public bool SendAsyncCalled { get; private set; }
+                SendAsyncCalled = true;
 
-                protected override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
-                {
-                    SendAsyncCalled = true;
-
-                    return Task.FromResult(new HttpResponseMessage());
-                }
+                return Task.FromResult(new HttpResponseMessage());
             }
         }
     }

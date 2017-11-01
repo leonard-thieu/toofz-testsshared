@@ -2,81 +2,77 @@
 using System.Data.Entity.Infrastructure;
 using System.Threading;
 using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using Xunit;
 
 namespace toofz.TestsShared.Tests
 {
-    class FakeDbAsyncEnumeratorTests
+    public class TestDbAsyncEnumeratorTests
     {
-        [TestClass]
         public class Constructor
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsInstance()
             {
                 // Arrange
                 var inner = Mock.Of<IEnumerator<double>>();
 
                 // Act
-                var enumerator = new FakeDbAsyncEnumerator<double>(inner);
+                var enumerator = new TestDbAsyncEnumerator<double>(inner);
 
                 // Assert
-                Assert.IsInstanceOfType(enumerator, typeof(FakeDbAsyncEnumerator<double>));
+                Assert.IsType<TestDbAsyncEnumerator<double>>(enumerator);
             }
         }
 
-        [TestClass]
         public class CurrentProperty
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsCurrentElement()
             {
                 // Arrange
                 var mockInner = new Mock<IEnumerator<double>>();
                 mockInner.SetupGet(i => i.Current).Returns(5.5);
                 var inner = mockInner.Object;
-                var enumerator = new FakeDbAsyncEnumerator<double>(inner);
+                var enumerator = new TestDbAsyncEnumerator<double>(inner);
 
                 // Act
                 var current = enumerator.Current;
 
                 // Assert
-                Assert.AreEqual(5.5, current);
+                Assert.Equal(5.5, current);
             }
         }
 
-        [TestClass]
         public class IDbAsyncEnumerator_CurrentProperty
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsCurrentElement()
             {
                 // Arrange
                 var mockInner = new Mock<IEnumerator<double>>();
                 mockInner.SetupGet(i => i.Current).Returns(5.5);
                 var inner = mockInner.Object;
-                var enumerator = new FakeDbAsyncEnumerator<double>(inner);
+                var enumerator = new TestDbAsyncEnumerator<double>(inner);
                 var asyncEnumerator = (IDbAsyncEnumerator)enumerator;
 
                 // Act
                 var current = asyncEnumerator.Current;
 
                 // Assert
-                Assert.AreEqual(5.5, current);
+                Assert.Equal(5.5, current);
             }
         }
 
-        [TestClass]
         public class MoveNextAsyncMethod
         {
-            [TestMethod]
+            [Fact]
             public async Task CallsMoveNextOnInner()
             {
                 // Arrange
                 var mockInner = new Mock<IEnumerator<double>>();
                 var inner = mockInner.Object;
-                var enumerator = new FakeDbAsyncEnumerator<double>(inner);
+                var enumerator = new TestDbAsyncEnumerator<double>(inner);
                 var cancellationToken = CancellationToken.None;
 
                 // Act
@@ -86,34 +82,33 @@ namespace toofz.TestsShared.Tests
                 mockInner.Verify(i => i.MoveNext(), Times.Once);
             }
 
-            [TestMethod]
+            [Fact]
             public async Task ReturnsValueFromInnerMoveNext()
             {
                 // Arrange
                 var mockInner = new Mock<IEnumerator<double>>();
                 mockInner.Setup(i => i.MoveNext()).Returns(true);
                 var inner = mockInner.Object;
-                var enumerator = new FakeDbAsyncEnumerator<double>(inner);
+                var enumerator = new TestDbAsyncEnumerator<double>(inner);
                 var cancellationToken = CancellationToken.None;
 
                 // Act
                 var moved = await enumerator.MoveNextAsync(cancellationToken);
 
                 // Assert
-                Assert.IsTrue(moved);
+                Assert.True(moved);
             }
         }
 
-        [TestClass]
         public class DisposeMethod
         {
-            [TestMethod]
+            [Fact]
             public void DisposesInner()
             {
                 // Arrange
                 var mockInner = new Mock<IEnumerator<double>>();
                 var inner = mockInner.Object;
-                var enumerator = new FakeDbAsyncEnumerator<double>(inner);
+                var enumerator = new TestDbAsyncEnumerator<double>(inner);
 
                 // Act
                 enumerator.Dispose();

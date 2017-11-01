@@ -1,6 +1,9 @@
 version: 4.1.0.{build}
 image: Visual Studio 2017
 
+branches:
+  only:
+    - master
 configuration:
   - Release
 environment:
@@ -8,7 +11,7 @@ environment:
   MYGET_API_KEY:
     secure: XZmbJDCK5oiqhbLt1y7UXM6aCYPpF2tm/bJMUJzBsCe1fd2TuwXyaz99RN+bDpHw
 cache:
-  - packages -> **\packages.config
+  - '%LocalAppData%\NuGet\Cache'
 notifications:
   - provider: Slack
     incoming_webhook:
@@ -19,6 +22,7 @@ assembly_info:
   assembly_version: $(appveyor_build_version)
 
 install:
+  - nuget update -self
   - git clone https://github.com/leonard-thieu/toofz-build.git Scripts
   
 before_build:

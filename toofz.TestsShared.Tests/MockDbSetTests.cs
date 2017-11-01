@@ -3,43 +3,41 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace toofz.TestsShared.Tests
 {
-    class MockDbSetTests
+    public class MockDbSetTests
     {
-        [TestClass]
         public class OfMethod
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsInstance()
             {
                 // Arrange -> Act
                 var mockObjects = MockDbSet<object>.Of();
 
                 // Assert
-                Assert.IsInstanceOfType(mockObjects, typeof(DbSet<object>));
+                Assert.IsAssignableFrom<DbSet<object>>(mockObjects);
             }
         }
 
-        [TestClass]
         public class Constructor_IEnumerable_TEntity
         {
-            [TestMethod]
+            [Fact]
             public void DataIsNull_ThrowsArgumentNullException()
             {
                 // Arrange
                 IEnumerable<object> data = null;
 
                 // Act -> Assert
-                Assert.ThrowsException<ArgumentNullException>(() =>
+                Assert.Throws<ArgumentNullException>(() =>
                 {
                     new MockDbSet<object>(data);
                 });
             }
 
-            [TestMethod]
+            [Fact]
             public void ReturnsInstance()
             {
                 // Arrange
@@ -49,14 +47,12 @@ namespace toofz.TestsShared.Tests
                 var mockDbSet = new MockDbSet<object>(data);
 
                 // Assert
-                Assert.IsInstanceOfType(mockDbSet, typeof(MockDbSet<object>));
+                Assert.IsAssignableFrom<MockDbSet<object>>(mockDbSet);
             }
         }
-
-        [TestClass]
         public class Constructor_Params_Array_TEntity
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsInstance()
             {
                 // Arrange
@@ -66,14 +62,13 @@ namespace toofz.TestsShared.Tests
                 var mockDbSet = new MockDbSet<object>(entity);
 
                 // Assert
-                Assert.IsInstanceOfType(mockDbSet, typeof(MockDbSet<object>));
+                Assert.IsAssignableFrom<MockDbSet<object>>(mockDbSet);
             }
         }
 
-        [TestClass]
         public class IDbAsyncEnumerable_TEntity_GetAsyncEnumeratorMethod
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsAsyncEnumerator()
             {
                 // Arrange
@@ -84,14 +79,13 @@ namespace toofz.TestsShared.Tests
                 var asyncEnumerator = asyncEnumerable.GetAsyncEnumerator();
 
                 // Assert
-                Assert.IsNotNull(asyncEnumerator);
+                Assert.NotNull(asyncEnumerator);
             }
         }
 
-        [TestClass]
         public class IQueryable_TEntity_ProviderProperty
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsProvider()
             {
                 // Arrange
@@ -102,14 +96,13 @@ namespace toofz.TestsShared.Tests
                 var provider = queryable.Provider;
 
                 // Assert
-                Assert.IsNotNull(provider);
+                Assert.NotNull(provider);
             }
         }
 
-        [TestClass]
         public class IQueryable_TEntity_ExpressionProperty
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsExpression()
             {
                 // Arrange
@@ -120,14 +113,13 @@ namespace toofz.TestsShared.Tests
                 var expression = queryable.Expression;
 
                 // Assert
-                Assert.IsNotNull(expression);
+                Assert.NotNull(expression);
             }
         }
 
-        [TestClass]
         public class IQueryable_TEntity_ElementTypeProperty
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsElementType()
             {
                 // Arrange
@@ -138,14 +130,13 @@ namespace toofz.TestsShared.Tests
                 var elementType = queryable.ElementType;
 
                 // Assert
-                Assert.IsNotNull(elementType);
+                Assert.NotNull(elementType);
             }
         }
 
-        [TestClass]
         public class IQueryable_TEntity_GetEnumeratorMethod
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsElementType()
             {
                 // Arrange
@@ -156,14 +147,13 @@ namespace toofz.TestsShared.Tests
                 var enumerator = queryable.GetEnumerator();
 
                 // Assert
-                Assert.IsNotNull(enumerator);
+                Assert.NotNull(enumerator);
             }
         }
 
-        [TestClass]
         public class AsNoTrackingMethod
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsDbSet()
             {
                 // Arrange
@@ -174,14 +164,13 @@ namespace toofz.TestsShared.Tests
                 var dbSet2 = dbSet.AsNoTracking();
 
                 // Assert
-                Assert.IsInstanceOfType(dbSet2, typeof(DbSet<object>));
+                Assert.IsAssignableFrom<DbSet<object>>(dbSet2);
             }
         }
 
-        [TestClass]
         public class IncludeMethod
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsDbSet()
             {
                 // Arrange
@@ -192,7 +181,7 @@ namespace toofz.TestsShared.Tests
                 var dbSet2 = dbSet.Include(d => d.Length);
 
                 // Assert
-                Assert.IsInstanceOfType(dbSet2, typeof(DbSet<string>));
+                Assert.IsAssignableFrom<DbSet<string>>(dbSet2);
             }
         }
     }

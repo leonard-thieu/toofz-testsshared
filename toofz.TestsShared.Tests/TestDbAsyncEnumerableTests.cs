@@ -1,82 +1,78 @@
 ﻿using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Linq.Expressions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Xunit;
 
 namespace toofz.TestsShared.Tests
 {
-    class FakeDbAsyncEnumerableTests
+    public class TestDbAsyncEnumerableTests
     {
-        [TestClass]
         public class Constructor
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsInstance()
             {
                 // Arrange
                 var expression = Expression.Constant(new[] { 5.5 });
 
                 // Act
-                var enumerable = new FakeDbAsyncEnumerable<double>(expression);
+                var enumerable = new TestDbAsyncEnumerable<double>(expression);
 
                 // Assert
-                Assert.IsInstanceOfType(enumerable, typeof(FakeDbAsyncEnumerable<double>));
+                Assert.IsType<TestDbAsyncEnumerable<double>>(enumerable);
             }
         }
 
-        [TestClass]
         public class GetAsyncEnumeratorMethod
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsAsyncEnumerator()
             {
                 // Arrange
                 var expression = Expression.Constant(new[] { 5.5 });
-                var enumerable = new FakeDbAsyncEnumerable<double>(expression);
+                var enumerable = new TestDbAsyncEnumerable<double>(expression);
 
                 // Act
                 var asyncEnumerator = enumerable.GetAsyncEnumerator();
 
                 // Assert
-                Assert.IsInstanceOfType(asyncEnumerator, typeof(IDbAsyncEnumerator<double>));
+                Assert.IsAssignableFrom<IDbAsyncEnumerator<double>>(asyncEnumerator);
             }
         }
 
-        [TestClass]
         public class IDbAsyncEnumerable_GetAsyncEnumeratorMethod
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsAsyncEnumerator()
             {
                 // Arrange
                 var expression = Expression.Constant(new[] { 5.5 });
-                var enumerable = new FakeDbAsyncEnumerable<double>(expression);
+                var enumerable = new TestDbAsyncEnumerable<double>(expression);
                 var asyncEnumerable = (IDbAsyncEnumerable)enumerable;
 
                 // Act
                 var asyncEnumerator = asyncEnumerable.GetAsyncEnumerator();
 
                 // Assert
-                Assert.IsInstanceOfType(asyncEnumerator, typeof(IDbAsyncEnumerator));
+                Assert.IsAssignableFrom<IDbAsyncEnumerator>(asyncEnumerator);
             }
         }
 
-        [TestClass]
         public class IQueryable_ProviderProperty
         {
-            [TestMethod]
+            [Fact]
             public void ReturnsProvider()
             {
                 // Arrange
                 var expression = Expression.Constant(new[] { 5.5 });
-                var enumerable = new FakeDbAsyncEnumerable<double>(expression);
+                var enumerable = new TestDbAsyncEnumerable<double>(expression);
                 var queryable = (IQueryable)enumerable;
 
                 // Act
                 var provider = queryable.Provider;
 
                 // Assert
-                Assert.IsInstanceOfType(provider, typeof(IQueryProvider));
+                Assert.IsAssignableFrom<IQueryProvider>(provider);
             }
         }
     }
