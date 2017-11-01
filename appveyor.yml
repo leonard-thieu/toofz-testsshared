@@ -1,6 +1,9 @@
 version: 4.1.0.{build}
 image: Visual Studio 2017
 
+branches:
+  only:
+    - master
 configuration:
   - Release
 environment:
@@ -23,7 +26,7 @@ install:
   - git clone https://github.com/leonard-thieu/toofz-build.git Scripts
   
 before_build:
-  - appveyor-retry nuget restore -PackagesDirectory packages -Verbosity quiet
+  - appveyor-retry nuget restore -Verbosity quiet
 build:
   project: $(PROJECT).sln
   verbosity: minimal
