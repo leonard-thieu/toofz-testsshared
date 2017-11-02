@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Version>5.0.1</Version>
+    <Version>5.0.2</Version>
     <Authors>Leonard Thieu</Authors>
     <Product>toofz Utilities for Tests</Product>
     <Description>Utility library for testing.</Description>
