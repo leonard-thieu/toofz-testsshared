@@ -3,14 +3,16 @@
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
     <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
-    <Version>5.0.2</Version>
+    <PackageVersion>5.0.2</PackageVersion>
     <Authors>Leonard Thieu</Authors>
-    <Product>toofz Utilities for Tests</Product>
+    <Title>toofz Utilities for Tests</Title>
     <Description>Utility library for testing.</Description>
     <Copyright>Copyright © Leonard Thieu 2017</Copyright>
     <PackageLicenseUrl>https://github.com/leonard-thieu/toofz-utilities-for-tests/blob/8e5e8dc7f0f4f682e7e97663e356e0f367a7bd8a/LICENSE</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/leonard-thieu/toofz-utilities-for-tests</PackageProjectUrl>
     <PackageIconUrl>https://user-images.githubusercontent.com/5265970/29717713-27e1a95c-897e-11e7-9d28-dae64be705b5.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/leonard-thieu/toofz-utilities-for-tests.git</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
